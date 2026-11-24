@@ -18,13 +18,15 @@ jobs:
       - name: Set up Node
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: "24"
       - name: Install the CDK Dependency
         run: |
           npm install -g aws-cdk
-      - name: Install other dependencies
+      - name: Install dependencies and validate project
         run: |
-          npm install
+          npm ci
+          npm run build
+          npx cdk synth
       - name: Configure AWS credentials
         uses: aws-actions/configure-aws-credentials@v4
         with:
@@ -32,7 +34,11 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: "us-east-1"
       - name: Deploy to AWS
+        env:
+          AWS_REGION: us-east-1
         run: |
+          ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)
+          npx cdk bootstrap aws://$ACCOUNT_ID/us-east-1
           npx cdk deploy repoStack --require-approval never
           npx cdk deploy ContainerizedAppStack --require-approval never
 
