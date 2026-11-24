@@ -16,6 +16,14 @@
 **/.vscode
 **/.next
 **/.cache
+**/.claude
+**/.env
+**/.env.*
+**/*.pem
+**/*.key
+**/*.p12
+**/*.pfx
+**/.aws
 **/*.*proj.user
 **/*.dbmdl
 **/*.jfm

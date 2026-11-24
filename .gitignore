@@ -1,8 +1,37 @@
 *.js
 !jest.config.js
 *.d.ts
-node_modules
+node_modules/
 
-# CDK asset staging directory
-.cdk.staging
-cdk.out
+# Environment and credentials
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+credentials
+config
+.aws/
+.claude/
+
+# Logs and local state
+*.log
+logs/
+coverage/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# CDK and build output
+.cdk.staging/
+cdk.out/
+build/
+dist/
+
+# Temporary and OS files
+*.tmp
+*.swp
+~$*

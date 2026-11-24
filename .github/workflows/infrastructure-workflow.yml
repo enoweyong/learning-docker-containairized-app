@@ -6,6 +6,9 @@ name: AWS Infrastructure CI/CD
       - infra
       - main
 
+permissions:
+  contents: read
+
 jobs:
   build:
     runs-on: ubuntu-latest
