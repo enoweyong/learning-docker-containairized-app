@@ -31,8 +31,14 @@
       "node"
     ]
   },
+  "include": [
+    "bin/**/*.ts",
+    "lib/**/*.ts",
+    "test/**/*.ts"
+  ],
   "exclude": [
     "node_modules",
+    "container",
     "cdk.out"
   ]
 }
